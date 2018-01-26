@@ -42,7 +42,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void exInitView() {
-        tv = (TextView) findViewById(R.id.sample_text);
+
+
     }
 
     @Override

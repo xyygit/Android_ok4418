@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android_ok4418.iml" filepath="$PROJECT_DIR$/Android_ok4418.iml" />
+      <module fileurl="file://C:\work\外接项目\upperMonitor\Android_ok4418\Android_ok4418.iml" filepath="C:\work\外接项目\upperMonitor\Android_ok4418\Android_ok4418.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\work\外接项目\upperMonitor\Android_ok4418\app\app.iml" filepath="C:\work\外接项目\upperMonitor\Android_ok4418\app\app.iml" />
     </modules>
   </component>
 </project>
