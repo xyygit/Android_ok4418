@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -25,16 +24,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Fragment[] mFragments;
 
-    private RadioGroup mRadioGroup;
-    private RadioButton mRadioButtonHome;
+    private RadioGroup mRadioGroup,mRadioBtnBottom;
+    private RadioButton mRadioButtonHome,mRadioButtonWarn;
 
-    private Button btnWarn, btnTemp, btnFlow, btnGas;
-
-    /**
-     * 是否隐藏状态栏
-     *
-     * @return
-     */
     @Override
     protected boolean isNeedHideStatusBar() {
         return true;
@@ -67,28 +59,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void initView() {
 
-        btnWarn = (Button) findViewById(R.id.btn_warn);
-        btnTemp = (Button) findViewById(R.id.btn_temp);
-        btnFlow = (Button) findViewById(R.id.btn_flow);
-        btnGas = (Button) findViewById(R.id.btn_gas);
-
-        btnWarn.setOnClickListener(this);
-        btnTemp.setOnClickListener(this);
-        btnFlow.setOnClickListener(this);
-        btnGas.setOnClickListener(this);
-
         mFragments = getFragments();
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group_button);
+        mRadioBtnBottom = (RadioGroup) findViewById(R.id.radio_group_bottom);
         mRadioButtonHome = (RadioButton) findViewById(R.id.radio_button_home);
+        mRadioButtonWarn = (RadioButton) findViewById(R.id.radio_button_warn);
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             Fragment mFragment = null;
 
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-
-                btnTemp.setVisibility(View.INVISIBLE);
-                btnFlow.setVisibility(View.INVISIBLE);
-                btnGas.setVisibility(View.INVISIBLE);
 
                 switch (checkedId) {
                     case R.id.radio_button_home:
@@ -98,9 +78,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     case R.id.radio_button_chart:
                         mFragment = mFragments[1];
                         currentIndex = TAB_INDEX_CHART;
-                        btnTemp.setVisibility(View.VISIBLE);
-                        btnFlow.setVisibility(View.VISIBLE);
-                        btnGas.setVisibility(View.VISIBLE);
                         break;
                     case R.id.radio_button_set:
                         mFragment = mFragments[2];
@@ -126,8 +103,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 }
             }
         });
+
+        mRadioBtnBottom.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                //TODO 底部按钮点击事件
+            }
+        });
+
         // 保证第一次会回调OnCheckedChangeListener
         mRadioButtonHome.setChecked(true);
+        mRadioButtonWarn.setChecked(true);
     }
 
     private Fragment[] getFragments() {
@@ -144,14 +130,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_warn:
-                break;
-            case R.id.btn_temp:
-                break;
-            case R.id.btn_flow:
-                break;
-            case R.id.btn_gas:
-                break;
             default:
                 break;
 

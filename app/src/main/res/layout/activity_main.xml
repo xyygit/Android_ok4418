@@ -185,71 +185,50 @@
         </RadioGroup>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/rl_btns"
+    <RadioGroup
+        android:id="@+id/radio_group_bottom"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="@color/color_2d2326"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp">
-
-        <Button
-            android:id="@+id/btn_warn"
-            android:layout_width="0dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radio_button_warn"
+            style="@style/MainBtnStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_round_rec_ff4081_corner_5"
-            android:text="报警"
-            android:textColor="#ffffff"
-            android:textSize="14dp" />
+            android:text="@string/main_btn_warn" />
 
-        <Button
-            android:id="@+id/btn_temp"
-            android:layout_width="0dp"
+        <RadioButton
+            android:id="@+id/radio_button_temp"
+            style="@style/MainBtnStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_round_rec_dbdada_corner_5"
-            android:text="温度"
-            android:textColor="#ffffff"
-            android:textSize="14dp" />
+            android:text="@string/main_btn_temp" />
 
-        <Button
-            android:id="@+id/btn_flow"
-            android:layout_width="0dp"
+        <RadioButton
+            android:id="@+id/radio_button_flow"
+            style="@style/MainBtnStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_round_rec_dbdada_corner_5"
-            android:text="压力/流量"
-            android:textColor="#ffffff"
-            android:textSize="14dp" />
+            android:text="@string/main_btn_flow" />
 
-        <Button
-            android:id="@+id/btn_gas"
-            android:layout_width="0dp"
+        <RadioButton
+            android:id="@+id/radio_button_gas"
+            style="@style/MainBtnStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_round_rec_dbdada_corner_5"
-            android:text="气体浓度"
-            android:textColor="#ffffff"
-            android:textSize="14dp" />
-    </LinearLayout>
+            android:text="@string/main_btn_gas" />
+
+    </RadioGroup>
+
 
     <FrameLayout
         android:id="@+id/home_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/rl_btns"
+        android:layout_above="@id/radio_group_bottom"
         android:layout_below="@id/rl_tab"
         android:padding="5dp"
         android:background="@color/color_998F92" />

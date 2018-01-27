@@ -69,7 +69,6 @@ public class ExCommonUtil {
      * @param str
      * @return String
      * @method stringUTF8Encode
-     * @author lightning
      */
     public static final String stringUTF8Encode(String str) {
         return stringEncode(str, "UTF-8");
@@ -82,7 +81,6 @@ public class ExCommonUtil {
      * @param charset
      * @return String
      * @method stringEncode
-     * @author lightning
      */
     public static final String stringEncode(String str, String charset) {
         if (!ExCommonUtil.isEmpty(str)) {
@@ -101,7 +99,6 @@ public class ExCommonUtil {
      * @param str
      * @return String
      * @method stringUTF8Decode
-     * @author lightning
      */
     public static final String stringUTF8Decode(String str) {
         return stringDecode(str, "UTF-8");
@@ -114,7 +111,6 @@ public class ExCommonUtil {
      * @param charset
      * @return String
      * @method stringDecode
-     * @author lightning
      */
     public static final String stringDecode(String str, String charset) {
         if (!ExCommonUtil.isEmpty(str)) {
@@ -133,7 +129,6 @@ public class ExCommonUtil {
      * @param str
      * @return String
      * @method unicodeDecode
-     * @author lightning
      */
     public static final String unicodeDecode(String str) {
         StringBuffer sb = new StringBuffer();
@@ -155,7 +150,6 @@ public class ExCommonUtil {
      * @param strText
      * @return String
      * @method unicodeEncode
-     * @author lightning
      */
     public static final String unicodeEncode(String strText) {
         char c;
