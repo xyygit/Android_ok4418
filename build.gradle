@@ -23,6 +23,7 @@ allprojects {
     project.ext {
         logger = 'com.orhanobut:logger:2.1.1'
         recyclerview = 'com.android.support:recyclerview-v7:26.1.0'
+        gson = 'com.google.code.gson:gson:2.8.2'
     }
 }
 

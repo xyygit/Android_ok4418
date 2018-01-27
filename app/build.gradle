@@ -43,4 +43,5 @@ dependencies {
 
     implementation project.ext.logger
     implementation project.ext.recyclerview
+    implementation project.ext.gson
 }

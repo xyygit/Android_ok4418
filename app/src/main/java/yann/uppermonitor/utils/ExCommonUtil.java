@@ -7,10 +7,6 @@ import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by yayun.xia on 2018/1/27.
- */
-
 public class ExCommonUtil {
     private ExCommonUtil() {
     }
