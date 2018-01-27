@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">UpperMonitor</string>
+    <string name="main_tab_home">主界面</string>
+    <string name="main_tab_chart">曲线</string>
+    <string name="main_tab_set">设置</string>
+    <string name="main_tab_adjust">校准</string>
+    <string name="main_tab_system">系统</string>
+    <string name="main_tab_service">服务</string>
 </resources>

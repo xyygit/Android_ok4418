@@ -9,70 +9,80 @@
     <RelativeLayout
         android:id="@+id/rl_tab"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@color/color_2d2326">
+
         <LinearLayout
             android:id="@+id/ll_parms"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingLeft="12dp"
             android:gravity="center_vertical|right"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="12dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CO2: 5.0%"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="O2: 5.0%"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ll_date"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingRight="12dp"
             android:layout_alignParentRight="true"
             android:gravity="center_vertical|left"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingRight="12dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10:00:00"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2017-06-10"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/ll_parms"
             android:layout_toLeftOf="@id/ll_date"
+            android:layout_toRightOf="@id/ll_parms"
             android:gravity="center"
+            android:visibility="gone"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
                 android:drawablePadding="5dp"
-                android:textColor="#ffffff"
                 android:drawableTop="@drawable/home"
-                android:text="主界面"/>
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="主界面"
+                android:textColor="#ffffff" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/chart"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:drawablePadding="5dp"
-                android:textColor="#ffffff"
-                android:drawableTop="@drawable/chart"
-                android:text="曲线"/>
+                android:text="曲线"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,92 +93,159 @@
                 android:paddingRight="5dp"
                 android:text="设置"
                 android:textColor="#ffffff" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:drawablePadding="5dp"
-                android:textColor="#ffffff"
-                android:drawableTop="@drawable/adjust"
-                android:text="校准"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:drawablePadding="5dp"
-                android:textColor="#ffffff"
-                android:drawableTop="@drawable/system"
-                android:text="系统"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:drawablePadding="5dp"
-                android:textColor="#ffffff"
-                android:drawableTop="@drawable/service"
-                android:text="服务"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/adjust"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="校准"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/system"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="系统"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/service"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="服务"
+                android:textColor="#ffffff" />
         </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/radio_group_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_toLeftOf="@id/ll_date"
+            android:layout_toRightOf="@id/ll_parms"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_button_home"
+                style="@style/RadioGroupButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tab_home_selector"
+                android:text="@string/main_tab_home" />
+
+            <RadioButton
+                android:id="@+id/radio_button_chart"
+                style="@style/RadioGroupButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tab_chart_selector"
+                android:text="@string/main_tab_chart" />
+
+            <RadioButton
+                android:id="@+id/radio_button_set"
+                style="@style/RadioGroupButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tab_setting_selector"
+                android:text="@string/main_tab_set" />
+
+            <RadioButton
+                android:id="@+id/radio_button_adjust"
+                style="@style/RadioGroupButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tab_adjust_selector"
+                android:text="@string/main_tab_adjust" />
+            <RadioButton
+                android:id="@+id/radio_button_system"
+                style="@style/RadioGroupButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tab_system_selector"
+                android:text="@string/main_tab_system" />
+
+            <RadioButton
+                android:id="@+id/radio_button_service"
+                style="@style/RadioGroupButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tab_service_selector"
+                android:text="@string/main_tab_service" />
+        </RadioGroup>
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/rl_btns"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:layout_alignParentBottom="true"
+        android:background="@color/color_2d2326"
         android:gravity="center"
-        android:background="@color/color_2d2326">
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:textSize="14dp"
+            android:text="报警"
             android:textColor="#ffffff"
-            android:text="报警"/>
+            android:textSize="14dp" />
+
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:textSize="14dp"
+            android:text="温度"
             android:textColor="#ffffff"
-            android:text="温度"/>
+            android:textSize="14dp" />
+
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:textSize="14dp"
+            android:text="压力/流量"
             android:textColor="#ffffff"
-            android:text="压力/流量"/>
+            android:textSize="14dp" />
+
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_weight="1"
             android:background="@color/colorAccent"
-            android:textSize="14dp"
+            android:text="气体浓度"
             android:textColor="#ffffff"
-            android:text="气体浓度"/>
+            android:textSize="14dp" />
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/home_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/rl_tab"
         android:layout_above="@id/rl_btns"
-        android:background="@color/color_f2f2f2"/>
+        android:layout_below="@id/rl_tab"
+        android:background="@color/color_f2f2f2" />
 </RelativeLayout>

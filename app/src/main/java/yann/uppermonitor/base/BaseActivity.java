@@ -1,9 +1,7 @@
 package yann.uppermonitor.base;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -18,7 +16,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import yann.uppermonitor.R;
 
@@ -32,9 +29,6 @@ public abstract class BaseActivity extends Activity{
     private ArrayList<BroadcastReceiver> systemReceiverList;
     private LocalBroadcastManager mLocalBroadcastManager;
     protected View contentView;
-
-    private boolean mIsForeground;
-    private boolean mIsBackground;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -169,26 +163,6 @@ public abstract class BaseActivity extends Activity{
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        mIsForeground = true;
-        if(mIsBackground) {
-            mIsBackground = false;
-            applicationForeground();
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mIsForeground = false;
-        if (isApplicationBroughtToBackground()) {
-            mIsBackground = true;
-            applicationBackground();
-        }
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
 
@@ -197,9 +171,6 @@ public abstract class BaseActivity extends Activity{
 
     }
 
-    protected abstract void applicationBackground();
-
-    protected abstract void applicationForeground();
 
     /**
      * 防止重复点击
@@ -255,27 +226,6 @@ public abstract class BaseActivity extends Activity{
     }
 
     /**
-     * 判断应用是否处于后台
-     *
-     * @return
-     */
-    public final boolean isApplicationBroughtToBackground() {
-        try {
-            ActivityManager am = (ActivityManager) getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
-            List<ActivityManager.RunningTaskInfo> tasks = am.getRunningTasks(1);
-            if (!tasks.isEmpty()) {
-                ComponentName topActivity = tasks.get(0).topActivity;
-                if (!topActivity.getPackageName().equals(getApplicationContext().getPackageName())) {
-                    return true;
-                }
-            }
-            return false;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    /**
      * 防多次点击
      */
     private long lastClickTime;
@@ -284,7 +234,7 @@ public abstract class BaseActivity extends Activity{
         long time = System.currentTimeMillis();
         long timeD = time - lastClickTime;
         lastClickTime = time;
-        if (timeD > 500) {
+        if (timeD > 100) {
             return true;
         }
         return false;
