@@ -69,8 +69,8 @@ public class HomeFragment extends BaseFragment {
         for (int i = 0; i < 10; i++) {
             RespoInfo respoInfo = new RespoInfo();
             respoInfo.name = "张三";
-            respoInfo.day = "3-5天";
-            respoInfo.temperature = "37°C";
+            respoInfo.day = i + "天";
+            respoInfo.temperature = "37." + i + "°C";
             respoInfoArrayList.add(respoInfo);
         }
         return respoInfoArrayList;
