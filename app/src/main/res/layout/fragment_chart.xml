@@ -1,24 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="图表页面" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <lecho.lib.hellocharts.view.LineChartView
-            android:id="@+id/chart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="15dp">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bg_chart">
+
+        <yann.uppermonitor.view.ChartView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_respo"
+                android:padding="5dp"
+                android:text="仓库1"
+                android:textColor="@color/color_white"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_respo"
+                android:padding="5dp"
+                android:text="仓库1"
+                android:textColor="@color/color_white"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_respo"
+                android:padding="5dp"
+                android:text="仓库1"
+                android:textColor="@color/color_white"
+                android:textSize="14dp" />
         </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingTop="40dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:drawableRight="@drawable/bg_line_green"
+            android:drawablePadding="5dp"
+            android:text="温    度:"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:drawableRight="@drawable/bg_line_red"
+            android:drawablePadding="5dp"
+            android:text="限    值: "
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:drawableRight="@drawable/bg_line_blue"
+            android:drawablePadding="5dp"
+            android:text="设置值:"
+            android:textSize="14dp" />
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

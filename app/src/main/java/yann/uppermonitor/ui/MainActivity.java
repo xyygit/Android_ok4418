@@ -9,9 +9,12 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import yann.uppermonitor.R;
 import yann.uppermonitor.base.BaseActivity;
+import yann.uppermonitor.utils.ExDeviceUtil;
+import yann.uppermonitor.utils.ExLogUtil;
 import yann.uppermonitor.utils.ExToastUtil;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -29,8 +32,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Fragment[] mFragments;
 
-    private RadioGroup mRadioGroup,mRadioBtnBottom;
-    private RadioButton mRadioButtonHome,mRadioButtonWarn,mRadioButtonTemp,mRadioButtonFlow,mRadioButtonGas;
+    private RadioGroup mRadioGroup, mRadioBtnBottom;
+    private RadioButton mRadioButtonHome, mRadioButtonWarn, mRadioButtonTemp, mRadioButtonFlow, mRadioButtonGas;
+
+    private RelativeLayout rlTab;
+    private RadioGroup radioGroup;
+
+    private int fragmentHegiht;
 
     @Override
     protected boolean isNeedHideStatusBar() {
@@ -63,8 +71,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initView() {
+        rlTab = findViewById(R.id.rl_tab);
+        radioGroup = findViewById(R.id.radio_group_bottom);
 
-        mFragments = getFragments();
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group_button);
         mRadioBtnBottom = (RadioGroup) findViewById(R.id.radio_group_bottom);
         mRadioButtonHome = (RadioButton) findViewById(R.id.radio_button_home);
@@ -122,14 +131,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
 
+        mFragments = getFragments();
+
         // 保证第一次会回调OnCheckedChangeListener
         mRadioButtonHome.setChecked(true);
         mRadioButtonWarn.setChecked(true);
+
+    }
+
+    @Override
+    protected void exInitData() {
+        super.exInitData();
     }
 
     private Fragment[] getFragments() {
+        int w = View.MeasureSpec.makeMeasureSpec(0,
+                View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0,
+                View.MeasureSpec.UNSPECIFIED);
+        rlTab.measure(w, h);
+        radioGroup.measure(w,h);
+        ExLogUtil.d("rlTab :" + rlTab.getMeasuredHeight() + " / width:" + rlTab.getMeasuredWidth());
+        ExLogUtil.d("radioGroup:" + radioGroup.getMeasuredHeight() + " / width:" + radioGroup.getMeasuredWidth());
+        fragmentHegiht = (int) ExDeviceUtil.getInstance().getScreenHeight() -rlTab.getMeasuredHeight() - radioGroup.getMeasuredHeight();
         Fragment fragments[] = new Fragment[6];
-        fragments[0] = HomeFragment.newInstance();
+        fragments[0] = HomeFragment.newInstance(fragmentHegiht);
         fragments[1] = ChartFragment.newInstance();
         fragments[2] = SettingFragment.newInstance();
         fragments[3] = AdjustFragment.newInstance();
@@ -161,28 +187,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     /**
      * 开启View闪烁效果
-     *
-     * */
-    private void startFlick( View view ){
-        if( null == view ){
+     */
+    private void startFlick(View view) {
+        if (null == view) {
             return;
         }
-        Animation alphaAnimation = new AlphaAnimation( 1, 0.4f );
-        alphaAnimation.setDuration( 300 );
-        alphaAnimation.setInterpolator( new LinearInterpolator( ) );
-        alphaAnimation.setRepeatCount( Animation.INFINITE );
-        alphaAnimation.setRepeatMode( Animation.REVERSE );
-        view.startAnimation( alphaAnimation );
+        Animation alphaAnimation = new AlphaAnimation(1, 0.4f);
+        alphaAnimation.setDuration(300);
+        alphaAnimation.setInterpolator(new LinearInterpolator());
+        alphaAnimation.setRepeatCount(Animation.INFINITE);
+        alphaAnimation.setRepeatMode(Animation.REVERSE);
+        view.startAnimation(alphaAnimation);
     }
 
     /**
      * 取消View闪烁效果
-     *
-     * */
-    private void stopFlick( View view ){
-        if( null == view ){
+     */
+    private void stopFlick(View view) {
+        if (null == view) {
             return;
         }
-        view.clearAnimation( );
+        view.clearAnimation();
     }
 }

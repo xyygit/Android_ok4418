@@ -10,6 +10,9 @@
         android:id="@+id/rl_tab"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@color/color_2d2326">
 
         <LinearLayout
@@ -61,8 +64,8 @@
             android:layout_toLeftOf="@id/ll_date"
             android:layout_toRightOf="@id/ll_parms"
             android:gravity="center"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -167,6 +170,7 @@
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/tab_adjust_selector"
                 android:text="@string/main_tab_adjust" />
+
             <RadioButton
                 android:id="@+id/radio_button_system"
                 style="@style/RadioGroupButtonStyle"

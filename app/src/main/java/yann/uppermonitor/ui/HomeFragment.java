@@ -11,6 +11,7 @@ import yann.uppermonitor.R;
 import yann.uppermonitor.adapter.HomeRespoAdapter;
 import yann.uppermonitor.base.BaseFragment;
 import yann.uppermonitor.model.RespoInfo;
+import yann.uppermonitor.utils.ExLogUtil;
 import yann.uppermonitor.view.GridSpacingItemDecoration;
 
 /**
@@ -20,8 +21,15 @@ import yann.uppermonitor.view.GridSpacingItemDecoration;
 
 public class HomeFragment extends BaseFragment {
 
-    public static HomeFragment newInstance() {
+    public final static String FRAGMENT_HEIGHT = "fragment_heght";
+
+    private int fragHeight;
+
+    public static HomeFragment newInstance(int height) {
         HomeFragment fragment = new HomeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(FRAGMENT_HEIGHT, height);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -52,6 +60,14 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
+    protected void exInitBundle(Bundle bundle) {
+        super.exInitBundle(bundle);
+        if (bundle != null) {
+            fragHeight = bundle.getInt(FRAGMENT_HEIGHT, 0);
+        }
+    }
+
+    @Override
     protected void exInitView(View contentView) {
         mRecyclerView = (RecyclerView) contentView.findViewById(R.id.recycle_view);
         int spanCount = 5; // 3 columns
@@ -59,14 +75,20 @@ public class HomeFragment extends BaseFragment {
         boolean includeEdge = false;
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), spanCount));
         mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
+    }
+
+    @Override
+    protected void exInitData() {
+        super.exInitData();
         respoInfos = getRespoInfos();
-        respoAdapter = new HomeRespoAdapter(getActivity(), respoInfos);
+        ExLogUtil.d("================fragment==============" + fragHeight);
+        respoAdapter = new HomeRespoAdapter(getActivity(), respoInfos, fragHeight - 100);
         mRecyclerView.setAdapter(respoAdapter);
     }
 
     private ArrayList<RespoInfo> getRespoInfos() {
         ArrayList<RespoInfo> respoInfoArrayList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             RespoInfo respoInfo = new RespoInfo();
             respoInfo.name = "张三";
             respoInfo.day = i + "天";
@@ -74,7 +96,6 @@ public class HomeFragment extends BaseFragment {
             respoInfoArrayList.add(respoInfo);
         }
         return respoInfoArrayList;
-
     }
 
 }

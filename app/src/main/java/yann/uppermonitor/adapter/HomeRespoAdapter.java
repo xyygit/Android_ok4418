@@ -19,32 +19,38 @@ import yann.uppermonitor.utils.ExToastUtil;
  * Created by yayun.xia on 2018/1/27.
  */
 
-public class HomeRespoAdapter extends RecyclerView.Adapter<HomeRespoAdapter.ViewHolder>{
+public class HomeRespoAdapter extends RecyclerView.Adapter<HomeRespoAdapter.ViewHolder> {
 
     private Context mContext;
     private ArrayList<RespoInfo> mRespoList;
+    private int mFragmentHeight;
 
-    public HomeRespoAdapter(Context mContext, ArrayList<RespoInfo> mRespoList) {
+    public HomeRespoAdapter(Context mContext, ArrayList<RespoInfo> mRespoList, int fragmentHeight) {
         this.mContext = mContext;
         this.mRespoList = mRespoList;
+        this.mFragmentHeight = fragmentHeight;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_respo, parent, false));
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_home_respo, parent, false);
+        if (mFragmentHeight > 0) {
+            view.getLayoutParams().height = mFragmentHeight / 2;
+        }
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         ViewHolder viewHolder = holder;
-        viewHolder.tvNum.setText(position+"");
+        viewHolder.tvNum.setText(position + "");
         viewHolder.tvName.setText(mRespoList.get(position).name);
         viewHolder.tvTemp.setText(mRespoList.get(position).temperature);
         viewHolder.tvday.setText(mRespoList.get(position).day);
         viewHolder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ExToastUtil.showLong(position+1+"");
+                ExToastUtil.showLong(position + 1 + "");
             }
         });
     }
@@ -54,10 +60,10 @@ public class HomeRespoAdapter extends RecyclerView.Adapter<HomeRespoAdapter.View
         return ExCommonUtil.isEmpty(mRespoList) ? 0 : mRespoList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         FrameLayout rootView;
-        TextView tvNum,tvName,tvTemp,tvday;
+        TextView tvNum, tvName, tvTemp, tvday;
 
         public ViewHolder(View itemView) {
             super(itemView);
