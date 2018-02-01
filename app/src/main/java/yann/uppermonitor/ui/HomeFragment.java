@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import yann.uppermonitor.R;
 import yann.uppermonitor.adapter.HomeRespoAdapter;
 import yann.uppermonitor.base.BaseFragment;
-import yann.uppermonitor.model.respoData;
-import yann.uppermonitor.model.singleRespoInfo;
+import yann.uppermonitor.model.RespoData;
+import yann.uppermonitor.model.SingleRespoInfo;
 import yann.uppermonitor.utils.ExFileUtil;
 import yann.uppermonitor.view.GridSpacingItemDecoration;
 
@@ -38,7 +38,7 @@ public class HomeFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private HomeRespoAdapter respoAdapter;
-    private ArrayList<singleRespoInfo> respoInfos;
+    private ArrayList<SingleRespoInfo> respoInfos;
 
     @Override
     protected void exProcessOnCreateBefore(Bundle savedInstanceState) {
@@ -88,7 +88,7 @@ public class HomeFragment extends BaseFragment {
 
     private void loadData() {
         Gson gson = new Gson();
-        respoData respoInfo = gson.fromJson(ExFileUtil.getInstance().readFileFromAssets("respoData"), respoData.class);
+        RespoData respoInfo = gson.fromJson(ExFileUtil.getInstance().readFileFromAssets("respoData"), RespoData.class);
         respoInfos = respoInfo.respoInfos;
         respoAdapter = new HomeRespoAdapter(getActivity(), respoInfos, fragHeight - 100);
         mRecyclerView.setAdapter(respoAdapter);

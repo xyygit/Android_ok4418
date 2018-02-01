@@ -10,11 +10,11 @@ import java.util.ArrayList;
  * Created by yayun.xia on 2018/1/27.
  */
 
-public class respoData implements Parcelable {
+public class RespoData implements Parcelable {
     public String co2;
     public String o2;
 
-    public ArrayList<singleRespoInfo> respoInfos;
+    public ArrayList<SingleRespoInfo> respoInfos;
 
     @Override
     public int describeContents() {
@@ -28,25 +28,25 @@ public class respoData implements Parcelable {
         dest.writeList(this.respoInfos);
     }
 
-    public respoData() {
+    public RespoData() {
     }
 
-    protected respoData(Parcel in) {
+    protected RespoData(Parcel in) {
         this.co2 = in.readString();
         this.o2 = in.readString();
-        this.respoInfos = new ArrayList<singleRespoInfo>();
-        in.readList(this.respoInfos, singleRespoInfo.class.getClassLoader());
+        this.respoInfos = new ArrayList<SingleRespoInfo>();
+        in.readList(this.respoInfos, SingleRespoInfo.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<respoData> CREATOR = new Parcelable.Creator<respoData>() {
+    public static final Parcelable.Creator<RespoData> CREATOR = new Parcelable.Creator<RespoData>() {
         @Override
-        public respoData createFromParcel(Parcel source) {
-            return new respoData(source);
+        public RespoData createFromParcel(Parcel source) {
+            return new RespoData(source);
         }
 
         @Override
-        public respoData[] newArray(int size) {
-            return new respoData[size];
+        public RespoData[] newArray(int size) {
+            return new RespoData[size];
         }
     };
 }

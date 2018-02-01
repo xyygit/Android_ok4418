@@ -24,8 +24,8 @@ import java.util.TimeZone;
 
 import yann.uppermonitor.R;
 import yann.uppermonitor.base.BaseActivity;
-import yann.uppermonitor.model.respoData;
-import yann.uppermonitor.model.singleRespoInfo;
+import yann.uppermonitor.model.RespoData;
+import yann.uppermonitor.model.SingleRespoInfo;
 import yann.uppermonitor.utils.ExDeviceUtil;
 import yann.uppermonitor.utils.ExFileUtil;
 import yann.uppermonitor.utils.ExToastUtil;
@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private int fragmentHegiht;
 
-    public ArrayList<singleRespoInfo> respoInfos;
+    public ArrayList<SingleRespoInfo> respoInfos;
 
     private TimeThread timeThread;
 
@@ -166,7 +166,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void exInitData() {
         super.exInitData();
         Gson gson = new Gson();
-        respoData respoInfo = gson.fromJson(ExFileUtil.getInstance().readFileFromAssets("respoData"), respoData.class);
+        RespoData respoInfo = gson.fromJson(ExFileUtil.getInstance().readFileFromAssets("respoData"), RespoData.class);
         respoInfos = respoInfo.respoInfos;
 
         tvCO2.setText("CO2:" + respoInfo.co2);

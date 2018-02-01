@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by yayun.xia on 2018/2/1.
  */
 
-public class singleRespoInfo implements Parcelable {
+public class SingleRespoInfo implements Parcelable {
     public String date;
     public String name;
     public String day;
@@ -30,10 +30,10 @@ public class singleRespoInfo implements Parcelable {
         dest.writeString(this.temperatureLimit);
     }
 
-    public singleRespoInfo() {
+    public SingleRespoInfo() {
     }
 
-    protected singleRespoInfo(Parcel in) {
+    protected SingleRespoInfo(Parcel in) {
         this.date = in.readString();
         this.name = in.readString();
         this.day = in.readString();
@@ -42,15 +42,15 @@ public class singleRespoInfo implements Parcelable {
         this.temperatureLimit = in.readString();
     }
 
-    public static final Parcelable.Creator<singleRespoInfo> CREATOR = new Parcelable.Creator<singleRespoInfo>() {
+    public static final Parcelable.Creator<SingleRespoInfo> CREATOR = new Parcelable.Creator<SingleRespoInfo>() {
         @Override
-        public singleRespoInfo createFromParcel(Parcel source) {
-            return new singleRespoInfo(source);
+        public SingleRespoInfo createFromParcel(Parcel source) {
+            return new SingleRespoInfo(source);
         }
 
         @Override
-        public singleRespoInfo[] newArray(int size) {
-            return new singleRespoInfo[size];
+        public SingleRespoInfo[] newArray(int size) {
+            return new SingleRespoInfo[size];
         }
     };
 }

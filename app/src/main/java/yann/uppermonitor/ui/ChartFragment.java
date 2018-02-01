@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +21,7 @@ import lecho.lib.hellocharts.model.ValueShape;
 import lecho.lib.hellocharts.view.LineChartView;
 import yann.uppermonitor.R;
 import yann.uppermonitor.base.BaseFragment;
-import yann.uppermonitor.model.respoData;
-import yann.uppermonitor.model.singleRespoInfo;
-import yann.uppermonitor.utils.ExFileUtil;
+import yann.uppermonitor.model.SingleRespoInfo;
 
 /**
  * 曲线
@@ -72,9 +68,7 @@ public class ChartFragment extends BaseFragment {
     protected void exInitData() {
         super.exInitData();
 
-        Gson gson = new Gson();
-        respoData respoInfo = gson.fromJson(ExFileUtil.getInstance().readFileFromAssets("respoData"), respoData.class);
-        List<singleRespoInfo> list = respoInfo.respoInfos;
+        ArrayList<SingleRespoInfo> list = ((MainActivity)getActivity()).respoInfos;
 
         renderLabelView(list);
 
@@ -152,8 +146,8 @@ public class ChartFragment extends BaseFragment {
         chartView.startDataAnimation();
     }
 
-    private void renderLabelView(List<singleRespoInfo> respoInfos) {
-        for (singleRespoInfo respoInfo : respoInfos) {
+    private void renderLabelView(List<SingleRespoInfo> respoInfos) {
+        for (SingleRespoInfo respoInfo : respoInfos) {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
             lp.weight = 1;
             lp.setMargins(0,0,2,0);
