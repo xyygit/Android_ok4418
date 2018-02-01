@@ -16,16 +16,19 @@ import yann.uppermonitor.view.row.ExRowRecyclerViewAdapter;
 
 public class SettingAdapter extends ExRowRecyclerViewAdapter {
 
+    private boolean isLeftAdpter = true;
+
     private Context mContext;
     private ArrayList<SingleRespoInfo> list;
 
-    public SettingAdapter(Context context) {
+    public SettingAdapter(Context context, boolean isLeftAdpter) {
         super(context);
         this.mContext = context;
+        this.isLeftAdpter = isLeftAdpter;
     }
 
-    public void setData(ArrayList<SingleRespoInfo> respoInfos){
-        if(!ExCommonUtil.isEmpty(list)){
+    public void setData(ArrayList<SingleRespoInfo> respoInfos) {
+        if (!ExCommonUtil.isEmpty(list)) {
             list.clear();
         }
 
@@ -34,13 +37,22 @@ public class SettingAdapter extends ExRowRecyclerViewAdapter {
         mExRowRepo.clear();
         mExRowRepo.addLast(new TempHeaderRow(mContext));
 
-        if(ExCommonUtil.isEmpty(list)){
+        if (ExCommonUtil.isEmpty(list)) {
             return;
         }
 
-        for (SingleRespoInfo respoInfo : list){
-            mExRowRepo.addLast(new TempContentRow(mContext,respoInfo));
+        if (isLeftAdpter) {
+            for (int i = 0; i < list.size() / 2; i++) {
+                mExRowRepo.addLast(new TempContentRow(mContext, list.get(i)));
+            }
+        } else {
+            for (int i = list.size() / 2; i < list.size(); i++) {
+                mExRowRepo.addLast(new TempContentRow(mContext, list.get(i)));
+            }
         }
+//        for (SingleRespoInfo respoInfo : list) {
+//            mExRowRepo.addLast(new TempContentRow(mContext, respoInfo));
+//        }
 
     }
 }

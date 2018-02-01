@@ -19,7 +19,7 @@ import yann.uppermonitor.model.SingleRespoInfo;
 
 public class SettingFragment extends BaseFragment {
 
-    private RecyclerView recyclerLeft,recyclerRight;
+    private RecyclerView recyclerLeft, recyclerRight;
 
     public static SettingFragment newInstance() {
         SettingFragment fragment = new SettingFragment();
@@ -58,13 +58,29 @@ public class SettingFragment extends BaseFragment {
     @Override
     protected void exInitData() {
         super.exInitData();
-        ArrayList<SingleRespoInfo> list = ((MainActivity)getActivity()).respoInfos;
+        ArrayList<SingleRespoInfo> list = ((MainActivity) getActivity()).respoInfos;
 
-        SettingAdapter settingAdapterLeft = new SettingAdapter(getActivity());
-        SettingAdapter settingAdapterRight = new SettingAdapter(getActivity());
+        SettingAdapter settingAdapterLeft = new SettingAdapter(getActivity(), true);
+        SettingAdapter settingAdapterRight = new SettingAdapter(getActivity(), false);
         settingAdapterLeft.setData(list);
         settingAdapterRight.setData(list);
         recyclerLeft.setAdapter(settingAdapterLeft);
         recyclerRight.setAdapter(settingAdapterRight);
+    }
+
+    private ArrayList<SingleRespoInfo> getLeftData(ArrayList<SingleRespoInfo> list) {
+        ArrayList<SingleRespoInfo> respoInfos = new ArrayList<>();
+        for (int i = 0; i < list.size() / 2; i++) {
+            respoInfos.add(list.get(i));
+        }
+        return respoInfos;
+    }
+
+    private ArrayList<SingleRespoInfo> getRightData(ArrayList<SingleRespoInfo> list) {
+        ArrayList<SingleRespoInfo> respoInfos = new ArrayList<>();
+        for (int i = list.size() / 2; i < list.size(); i++) {
+            respoInfos.add(list.get(i));
+        }
+        return respoInfos;
     }
 }

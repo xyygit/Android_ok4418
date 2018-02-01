@@ -193,7 +193,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         fragments[0] = HomeFragment.newInstance(fragmentHegiht);
         fragments[1] = ChartFragment.newInstance();
         fragments[2] = SettingFragment.newInstance();
-        fragments[3] = AdjustFragment.newInstance();
+        fragments[3] = AdjustFragment.newInstance(fragmentHegiht);
         fragments[4] = SystemFragment.newInstance();
         fragments[5] = ServiceFragment.newInstance();
         return fragments;
