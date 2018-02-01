@@ -1,0 +1,86 @@
+{
+  "co2":"7.0%",
+  "o2":"5.5%",
+  "respoInfos": [
+    {
+      "date": "2016-03-25",
+      "name": "仓库1",
+      "day": "3-5天",
+      "temperature": "5°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库2",
+      "day": "1-3天",
+      "temperature": "8°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库3",
+      "day": "3-5天",
+      "temperature": "4°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库4",
+      "day": "3-5天",
+      "temperature": "0°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库5",
+      "day": "3-5天",
+      "temperature": "8°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库6",
+      "day": "3-5天",
+      "temperature": "9°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库7",
+      "day": "3-5天",
+      "temperature": "7°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库8",
+      "day": "3-5天",
+      "temperature": "10°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库9",
+      "day": "3-5天",
+      "temperature": "12°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    },
+    {
+      "date": "2016-03-25",
+      "name": "仓库10",
+      "day": "3-5天",
+      "temperature": "15°C",
+      "temperatureSet": "16°C",
+      "temperatureLimit": "19°C"
+    }
+  ]
+}

@@ -2,6 +2,8 @@ package yann.uppermonitor.ui;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.IdRes;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -10,11 +12,22 @@ import android.view.animation.LinearInterpolator;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 import yann.uppermonitor.R;
 import yann.uppermonitor.base.BaseActivity;
+import yann.uppermonitor.model.respoData;
+import yann.uppermonitor.model.singleRespoInfo;
 import yann.uppermonitor.utils.ExDeviceUtil;
-import yann.uppermonitor.utils.ExLogUtil;
+import yann.uppermonitor.utils.ExFileUtil;
 import yann.uppermonitor.utils.ExToastUtil;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -37,8 +50,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private RelativeLayout rlTab;
     private RadioGroup radioGroup;
+    private TextView tvCO2, tvO2, tvTime, tvDate;
 
     private int fragmentHegiht;
+
+    public ArrayList<singleRespoInfo> respoInfos;
+
+    private TimeThread timeThread;
 
     @Override
     protected boolean isNeedHideStatusBar() {
@@ -71,6 +89,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initView() {
+        tvCO2 = findViewById(R.id.tv_co2);
+        tvO2 = findViewById(R.id.tv_o2);
+        tvTime = findViewById(R.id.tv_time);
+        tvDate = findViewById(R.id.tv_date);
+
         rlTab = findViewById(R.id.rl_tab);
         radioGroup = findViewById(R.id.radio_group_bottom);
 
@@ -142,6 +165,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void exInitData() {
         super.exInitData();
+        Gson gson = new Gson();
+        respoData respoInfo = gson.fromJson(ExFileUtil.getInstance().readFileFromAssets("respoData"), respoData.class);
+        respoInfos = respoInfo.respoInfos;
+
+        tvCO2.setText("CO2:" + respoInfo.co2);
+        tvO2.setText("O2:" + respoInfo.o2);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //获取当前时间
+        Date date = new Date(System.currentTimeMillis());
+        tvDate.setText(simpleDateFormat.format(date));
+
+        timeThread = new TimeThread();
+        timeThread.start();
     }
 
     private Fragment[] getFragments() {
@@ -150,10 +187,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         int h = View.MeasureSpec.makeMeasureSpec(0,
                 View.MeasureSpec.UNSPECIFIED);
         rlTab.measure(w, h);
-        radioGroup.measure(w,h);
-        ExLogUtil.d("rlTab :" + rlTab.getMeasuredHeight() + " / width:" + rlTab.getMeasuredWidth());
-        ExLogUtil.d("radioGroup:" + radioGroup.getMeasuredHeight() + " / width:" + radioGroup.getMeasuredWidth());
-        fragmentHegiht = (int) ExDeviceUtil.getInstance().getScreenHeight() -rlTab.getMeasuredHeight() - radioGroup.getMeasuredHeight();
+        radioGroup.measure(w, h);
+        fragmentHegiht = (int) ExDeviceUtil.getInstance().getScreenHeight() - rlTab.getMeasuredHeight() - radioGroup.getMeasuredHeight();
         Fragment fragments[] = new Fragment[6];
         fragments[0] = HomeFragment.newInstance(fragmentHegiht);
         fragments[1] = ChartFragment.newInstance();
@@ -208,5 +243,57 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             return;
         }
         view.clearAnimation();
+    }
+
+    public class TimeThread extends Thread {
+        @Override
+        public void run() {
+            do {
+                try {
+                    Thread.sleep(1000);
+                    Message msg = new Message();
+                    msg.what = 1;
+                    mHandler.sendMessage(msg);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } while (true);
+        }
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    tvTime.setText(getTime());
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    //获得当前年月日时分秒星期
+    public String getTime() {
+        final Calendar c = Calendar.getInstance();
+        c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+
+        String mHour = String.valueOf(c.get(Calendar.HOUR_OF_DAY));//时
+        String mMinute = String.valueOf(c.get(Calendar.MINUTE));//分
+        String mSecond = String.valueOf(c.get(Calendar.SECOND));//秒
+
+        return mHour + ":" + mMinute + ":" + mSecond;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mHandler != null) {
+            if (timeThread != null) {
+                mHandler.removeCallbacks(timeThread);
+            }
+        }
     }
 }

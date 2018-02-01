@@ -5,13 +5,16 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 import yann.uppermonitor.R;
 import yann.uppermonitor.adapter.HomeRespoAdapter;
 import yann.uppermonitor.base.BaseFragment;
-import yann.uppermonitor.model.RespoInfo;
-import yann.uppermonitor.utils.ExLogUtil;
+import yann.uppermonitor.model.respoData;
+import yann.uppermonitor.model.singleRespoInfo;
+import yann.uppermonitor.utils.ExFileUtil;
 import yann.uppermonitor.view.GridSpacingItemDecoration;
 
 /**
@@ -35,7 +38,7 @@ public class HomeFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private HomeRespoAdapter respoAdapter;
-    private ArrayList<RespoInfo> respoInfos;
+    private ArrayList<singleRespoInfo> respoInfos;
 
     @Override
     protected void exProcessOnCreateBefore(Bundle savedInstanceState) {
@@ -80,22 +83,15 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void exInitData() {
         super.exInitData();
-        respoInfos = getRespoInfos();
-        ExLogUtil.d("================fragment==============" + fragHeight);
-        respoAdapter = new HomeRespoAdapter(getActivity(), respoInfos, fragHeight - 100);
-        mRecyclerView.setAdapter(respoAdapter);
+        loadData();
     }
 
-    private ArrayList<RespoInfo> getRespoInfos() {
-        ArrayList<RespoInfo> respoInfoArrayList = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
-            RespoInfo respoInfo = new RespoInfo();
-            respoInfo.name = "张三";
-            respoInfo.day = i + "天";
-            respoInfo.temperature = "37." + i + "°C";
-            respoInfoArrayList.add(respoInfo);
-        }
-        return respoInfoArrayList;
+    private void loadData() {
+        Gson gson = new Gson();
+        respoData respoInfo = gson.fromJson(ExFileUtil.getInstance().readFileFromAssets("respoData"), respoData.class);
+        respoInfos = respoInfo.respoInfos;
+        respoAdapter = new HomeRespoAdapter(getActivity(), respoInfos, fragHeight - 100);
+        mRecyclerView.setAdapter(respoAdapter);
     }
 
 }

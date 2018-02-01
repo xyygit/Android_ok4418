@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import yann.uppermonitor.R;
-import yann.uppermonitor.model.RespoInfo;
+import yann.uppermonitor.model.singleRespoInfo;
 import yann.uppermonitor.utils.ExCommonUtil;
 import yann.uppermonitor.utils.ExToastUtil;
 
@@ -22,10 +22,10 @@ import yann.uppermonitor.utils.ExToastUtil;
 public class HomeRespoAdapter extends RecyclerView.Adapter<HomeRespoAdapter.ViewHolder> {
 
     private Context mContext;
-    private ArrayList<RespoInfo> mRespoList;
+    private ArrayList<singleRespoInfo> mRespoList;
     private int mFragmentHeight;
 
-    public HomeRespoAdapter(Context mContext, ArrayList<RespoInfo> mRespoList, int fragmentHeight) {
+    public HomeRespoAdapter(Context mContext, ArrayList<singleRespoInfo> mRespoList, int fragmentHeight) {
         this.mContext = mContext;
         this.mRespoList = mRespoList;
         this.mFragmentHeight = fragmentHeight;
