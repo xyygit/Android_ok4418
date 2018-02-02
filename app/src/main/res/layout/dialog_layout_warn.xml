@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_respo"
+    android:padding="12dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:paddingBottom="5dp"
+        android:text="报警"/>
+
+    <EditText
+        android:id="@+id/edt_warn_info"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/shape_round_rec_dbdada_corner_5"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:text="xxxxxx"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:textColor="@color/color_white"
+        android:text="当前报警"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="温度"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="CO2浓度"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="O2浓度"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="过滤器"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="CO2压力"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="N2压力"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="泵"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="CO2流量"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="N2流量"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="紫外线"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="CO2流量"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="O2传感器故障"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="舱室打开"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="CO2传感器故障"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:text="系统故障"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round_rec_dbdada_corner_5"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp">
+        <Button
+            android:id="@+id/btn_silent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="静音"
+            android:textColor="@color/color_white"
+            android:background="@drawable/bg_line_green"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@id/btn_silent"
+            android:layout_centerHorizontal="true"
+            android:text="退出"
+            android:textColor="@color/color_white"
+            android:background="@drawable/bg_line_green"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

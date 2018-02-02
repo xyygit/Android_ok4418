@@ -1,10 +1,13 @@
 package yann.uppermonitor.ui;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.IdRes;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -22,11 +25,13 @@ import java.util.Date;
 
 import yann.uppermonitor.R;
 import yann.uppermonitor.base.BaseActivity;
+import yann.uppermonitor.listener.DialogClickListener;
 import yann.uppermonitor.model.RespoData;
 import yann.uppermonitor.model.SingleRespoInfo;
 import yann.uppermonitor.utils.ExDeviceUtil;
 import yann.uppermonitor.utils.ExFileUtil;
 import yann.uppermonitor.utils.ExToastUtil;
+import yann.uppermonitor.view.WarnInfoDialog;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -177,6 +182,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         timeThread = new TimeThread();
         timeThread.start();
+
+        startFlick(mRadioButtonWarn);
     }
 
     private Fragment[] getFragments() {
@@ -201,6 +208,30 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.radio_button_warn:
+                final WarnInfoDialog warnInfoDialog = new WarnInfoDialog(this);
+                warnInfoDialog.showBottomDialog();
+                warnInfoDialog.setOnClickListener(new DialogClickListener() {
+                    @Override
+                    public void silent() {
+                        //TODO:静音
+                        silentSwitchOn();
+                    }
+
+                    @Override
+                    public void cancel() {
+                        warnInfoDialog.dismiss();
+                    }
+
+                    @Override
+                    public void save() {
+
+                    }
+
+                    @Override
+                    public void edit() {
+
+                    }
+                });
                 ExToastUtil.showLong("警告");
                 break;
             case R.id.radio_button_temp:
@@ -288,6 +319,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             if (timeThread != null) {
                 mHandler.removeCallbacks(timeThread);
             }
+        }
+    }
+
+    private void silentSwitchOn() {
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (audioManager != null) {
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            audioManager.getStreamVolume(AudioManager.STREAM_RING);
+            Log.d("Silent:", "RINGING 已被静音");
+        }
+    }
+
+    private void silentSwitchOff() {
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (audioManager != null) {
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+            audioManager.getStreamVolume(AudioManager.STREAM_RING);
+            Log.d("SilentListenerService", "RINGING 取消静音");
         }
     }
 }
