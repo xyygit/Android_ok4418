@@ -18,9 +18,7 @@ import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import yann.uppermonitor.R;
 import yann.uppermonitor.base.BaseActivity;
@@ -275,16 +273,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     };
 
-    //获得当前年月日时分秒星期
     public String getTime() {
-        final Calendar c = Calendar.getInstance();
-        c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 
-        String mHour = String.valueOf(c.get(Calendar.HOUR_OF_DAY));//时
-        String mMinute = String.valueOf(c.get(Calendar.MINUTE));//分
-        String mSecond = String.valueOf(c.get(Calendar.SECOND));//秒
-
-        return mHour + ":" + mMinute + ":" + mSecond;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:MM:ss");
+        //获取当前时间
+        Date date = new Date(System.currentTimeMillis());
+        return simpleDateFormat.format(date);
     }
 
     @Override
