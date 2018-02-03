@@ -32,6 +32,7 @@
                     android:layout_centerVertical="true"
                     android:text="时间"/>
                 <TextView
+                    android:id="@+id/tv_time1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -43,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
                     <TextView
+                        android:id="@+id/tv_time_set"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -71,6 +73,7 @@
                     android:layout_centerVertical="true"
                     android:text="日期"/>
                 <TextView
+                    android:id="@+id/tv_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -82,6 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
                     <TextView
+                        android:id="@+id/tv_date_set"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -109,16 +113,19 @@
                     android:layout_centerVertical="true"
                     android:text="时间格式:"/>
                 <RadioGroup
+                    android:id="@+id/radio_date_formate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
                     <RadioButton
+                        android:id="@+id/radio_button_12"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="12h"/>
                     <RadioButton
+                        android:id="@+id/radio_button_24"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -158,6 +165,7 @@
                     android:layout_centerVertical="true"
                     android:text="语言:"/>
                 <TextView
+                    android:id="@+id/tv_language"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -169,6 +177,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
                     <TextView
+                        android:id="@+id/tv_language_set"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -282,6 +291,7 @@
 
 
                 <TextView
+                    android:id="@+id/tv_ip"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -293,6 +303,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
                     <TextView
+                        android:id="@+id/tv_ip_set"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -320,6 +331,7 @@
                     android:layout_centerVertical="true"
                     android:text="账户:"/>
                 <TextView
+                    android:id="@+id/tv_account"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -331,6 +343,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
                     <TextView
+                        android:id="@+id/tv_account_set"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -357,6 +370,7 @@
                     android:layout_centerVertical="true"
                     android:text="系统:"/>
                 <TextView
+                    android:id="@+id/tv_system"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -368,6 +382,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
                     <TextView
+                        android:id="@+id/tv_system_set"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"

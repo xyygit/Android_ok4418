@@ -48,14 +48,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Fragment[] mFragments;
 
-    private RadioGroup mRadioGroup, mRadioBtnBottom;
-    private RadioButton mRadioButtonHome, mRadioButtonWarn, mRadioButtonTemp, mRadioButtonFlow, mRadioButtonGas;
+    public RadioGroup mRadioGroup, mRadioBtnBottom;
+    public RadioButton mRadioButtonHome, mRadioButtonWarn, mRadioButtonTemp, mRadioButtonFlow, mRadioButtonGas;
 
     private RelativeLayout rlTab;
     private RadioGroup radioGroup;
-    private TextView tvCO2, tvO2, tvTime, tvDate;
+    public TextView tvCO2, tvO2, tvTime, tvDate;
 
-    private int fragmentHegiht;
+    public int fragmentHegiht;
 
     public ArrayList<SingleRespoInfo> respoInfos;
 
@@ -175,10 +175,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvCO2.setText("CO2:" + respoInfo.co2);
         tvO2.setText("O2:" + respoInfo.o2);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        //获取当前时间
-        Date date = new Date(System.currentTimeMillis());
-        tvDate.setText(simpleDateFormat.format(date));
+        tvDate.setText(getCurrentDate());
 
         timeThread = new TimeThread();
         timeThread.start();
@@ -296,7 +293,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 1:
-                    tvTime.setText(getTime());
+                    tvTime.setText(getCurrentTime());
                     break;
                 default:
                     break;
@@ -304,9 +301,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     };
 
-    public String getTime() {
+    public String getCurrentTime() {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:MM:ss");
+        //获取当前时间
+        Date date = new Date(System.currentTimeMillis());
+        return simpleDateFormat.format(date);
+    }
+
+    public String getCurrentDate(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         //获取当前时间
         Date date = new Date(System.currentTimeMillis());
         return simpleDateFormat.format(date);

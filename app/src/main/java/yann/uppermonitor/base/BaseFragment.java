@@ -28,7 +28,6 @@ public abstract class BaseFragment extends Fragment{
 
         View rootViewFrame = inflater.inflate(R.layout.base_container, null);
         FrameLayout rootView = (FrameLayout) rootViewFrame.findViewById(R.id.rootView);
-
         int layoutId = exInitLayout();
         if (layoutId == 0) {
             contentView = exInitLayoutView();
